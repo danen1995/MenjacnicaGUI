@@ -14,6 +14,9 @@ import java.awt.Dimension;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+
+import menjacnica.tableModels.MenjacnicaTableModel;
+
 import javax.swing.UIManager;
 import java.awt.Color;
 import java.awt.Window.Type;
@@ -58,7 +61,6 @@ public class MenjacnicaGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public MenjacnicaGUI() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(MenjacnicaGUI.class.getResource("/ikonice/Show.png")));
 		setTitle("Menjacnica");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -110,7 +112,7 @@ public class MenjacnicaGUI extends JFrame {
 		JMenuItem mntmIzvrsiZamenu = new JMenuItem("Izvrsi zamenu");
 		popupMenu.add(mntmIzvrsiZamenu);
 		
-		table = new JTable();
+		table = getTable();
 		scrollPane.setViewportView(table);
 		
 		JPanel panel = new JPanel();
@@ -138,6 +140,16 @@ public class MenjacnicaGUI extends JFrame {
 		textPane.setPreferredSize(new Dimension(6, 50));
 		textPane.setBorder(new TitledBorder(null, "STATUS", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		scrollPane_1.setViewportView(textPane);
+	}
+
+	private JTable getTable() {
+		if(table == null){
+			table = new JTable();
+			MenjacnicaTableModel model = new MenjacnicaTableModel();
+			table.setModel(model);
+		}
+		return table;
+	
 	}
 
 	private static void addPopup(Component component, final JPopupMenu popup) {
