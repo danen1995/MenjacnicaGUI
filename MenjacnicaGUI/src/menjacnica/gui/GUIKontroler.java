@@ -91,4 +91,24 @@ public class GUIKontroler  {
 		kursevi.add(k);
 		
 	}
+	public static void izbrisiRed() {
+		try{
+			int selektovaniRed = menjacnica.vratiSelektovaniRed();
+			if(selektovaniRed == -1) {
+				JOptionPane.showMessageDialog(menjacnica.getContentPane(), "Niste selektovali red", "Greska", JOptionPane.ERROR_MESSAGE);
+			}else{
+				int opcija = JOptionPane.showConfirmDialog(menjacnica.getContentPane(), "Da li ste sigurni da zelite da izbrisete red?", "Brisanje reda", JOptionPane.YES_NO_OPTION);
+				if(opcija == JOptionPane.YES_OPTION){
+					kursevi.remove(selektovaniRed);
+					menjacnica.osveziTabelu();
+					JOptionPane.showMessageDialog(menjacnica.getContentPane(), "Uspesno ste obrisali red", "Obavestenje", JOptionPane.INFORMATION_MESSAGE);
+					menjacnica.ispisiPorukuOBrisanju(selektovaniRed);
+				}
+				
+			}
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(menjacnica, "Doslo je do greske prilikom brisanja reda", "Greska", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
 }

@@ -151,6 +151,12 @@ public class MenjacnicaGUI extends JFrame {
 		panel.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Izbrisi kurs");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				GUIKontroler.izbrisiRed();
+				
+			}
+		});
 		btnNewButton_1.setPreferredSize(new Dimension(100, 23));
 		panel.add(btnNewButton_1);
 		
@@ -213,6 +219,15 @@ public class MenjacnicaGUI extends JFrame {
 
 	public void ispisZaDodaj(String k) {
 		textPane.setText(textPane.getText()+ k + "\n");
+		
+	}
+
+	public int vratiSelektovaniRed() {
+		return table.getSelectedRow();
+	}
+
+	public void ispisiPorukuOBrisanju(int selektovaniRed) {
+		textPane.setText(textPane.getText()+ "Izbrisan je red sa indeksom: "+ selektovaniRed+"\n");
 		
 	}
 }
