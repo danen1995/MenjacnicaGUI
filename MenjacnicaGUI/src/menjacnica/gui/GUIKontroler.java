@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.io.File;
 import java.nio.channels.ShutdownChannelGroupException;
+import java.util.LinkedList;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -11,10 +12,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import menjacnica.Kurs;
+
 public class GUIKontroler  {
 
 	private JPanel contentPane;
 	private static MenjacnicaGUI menjacnica;
+	private static DodajKursGUI dodajKursGui;
+	static LinkedList<Kurs> kursevi = new LinkedList<>();
 	/**
 	 * Launch the application.
 	 */
@@ -66,5 +71,24 @@ public class GUIKontroler  {
 	}
 	public static void ispisiPodatkeOAutoru() {
 		JOptionPane.showMessageDialog(menjacnica.getContentPane(), "Dane Nikolic, 44/14.");
+	}
+	public static void otvoriDodajStudenta() {
+		dodajKursGui = new DodajKursGUI();
+		dodajKursGui.setVisible(true);
+		dodajKursGui.setLocationRelativeTo(null);
+		
+	}
+	public static void dodajUTabeluIUStatus(Kurs k) {
+		String kursString = k.toString();
+		menjacnica.ispisZaDodaj(kursString);
+		menjacnica.osveziTabelu();
+		
+	}
+	public static LinkedList<Kurs> vratiSveKurseve(){
+		return kursevi;
+	}
+	public static void dodajUListu(Kurs k) {
+		kursevi.add(k);
+		
 	}
 }

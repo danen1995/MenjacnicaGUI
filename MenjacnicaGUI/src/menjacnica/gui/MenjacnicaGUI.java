@@ -119,6 +119,11 @@ public class MenjacnicaGUI extends JFrame {
 		addPopup(scrollPane, popupMenu);
 		
 		JMenuItem mntmDodajKurs = new JMenuItem("Dodaj kurs");
+		mntmDodajKurs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GUIKontroler.otvoriDodajStudenta();
+			}
+		});
 		popupMenu.add(mntmDodajKurs);
 		
 		JMenuItem mntmIzbrisiKurs = new JMenuItem("Izbrisi kurs");
@@ -137,6 +142,11 @@ public class MenjacnicaGUI extends JFrame {
 		contentPane.add(panel, BorderLayout.EAST);
 		
 		JButton btnNewButton = new JButton("Dodaj kurs");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				GUIKontroler.otvoriDodajStudenta();
+			}
+		});
 		btnNewButton.setPreferredSize(new Dimension(100, 23));
 		panel.add(btnNewButton);
 		
@@ -160,7 +170,7 @@ public class MenjacnicaGUI extends JFrame {
 	private JTable getTable() {
 		if(table == null){
 			table = new JTable();
-			MenjacnicaTableModel model = new MenjacnicaTableModel();
+			MenjacnicaTableModel model = new MenjacnicaTableModel(GUIKontroler.kursevi);
 			table.setModel(model);
 		}
 		return table;
@@ -184,8 +194,11 @@ public class MenjacnicaGUI extends JFrame {
 			}
 		});
 	}
+	
 	public void osveziTabelu(){
-		MenjacnicaTableModel model = new MenjacnicaTableModel();
+		MenjacnicaTableModel model = (MenjacnicaTableModel) table.getModel();
+		model.ucitajKurseve(GUIKontroler.vratiSveKurseve());
+		
 	}
 
 	public void ispisZaUcitajFajl(String absolutePath) {
@@ -195,6 +208,11 @@ public class MenjacnicaGUI extends JFrame {
 
 	public void ispisZaSacuvajFajl(String absolutePath) {
 		textPane.setText(textPane.getText()+ "Sacuvan fajl: " + absolutePath + "\n");
+		
+	}
+
+	public void ispisZaDodaj(String k) {
+		textPane.setText(textPane.getText()+ k + "\n");
 		
 	}
 }
