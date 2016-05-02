@@ -45,6 +45,7 @@ public class MenjacnicaGUI extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 	private JTextPane textPane;
+	private JPopupMenu popupMenu;
 	/**
 	 * Create the frame.
 	 */
@@ -115,8 +116,8 @@ public class MenjacnicaGUI extends JFrame {
 		scrollPane.setMinimumSize(new Dimension(100, 100));
 		contentPane.add(scrollPane);
 		
-		JPopupMenu popupMenu = new JPopupMenu();
-		addPopup(scrollPane, popupMenu);
+		 popupMenu = new JPopupMenu();
+		
 		
 		JMenuItem mntmDodajKurs = new JMenuItem("Dodaj kurs");
 		mntmDodajKurs.addActionListener(new ActionListener() {
@@ -127,6 +128,11 @@ public class MenjacnicaGUI extends JFrame {
 		popupMenu.add(mntmDodajKurs);
 		
 		JMenuItem mntmIzbrisiKurs = new JMenuItem("Izbrisi kurs");
+		mntmIzbrisiKurs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				GUIKontroler.izbrisiRed();
+			}
+		});
 		popupMenu.add(mntmIzbrisiKurs);
 		
 		JMenuItem mntmIzvrsiZamenu = new JMenuItem("Izvrsi zamenu");
@@ -178,6 +184,7 @@ public class MenjacnicaGUI extends JFrame {
 			table = new JTable();
 			MenjacnicaTableModel model = new MenjacnicaTableModel(GUIKontroler.kursevi);
 			table.setModel(model);
+			addPopup(table, popupMenu);
 		}
 		return table;
 	
@@ -227,7 +234,7 @@ public class MenjacnicaGUI extends JFrame {
 	}
 
 	public void ispisiPorukuOBrisanju(int selektovaniRed) {
-		textPane.setText(textPane.getText()+ "Izbrisan je red sa indeksom: "+ selektovaniRed+"\n");
+		textPane.setText(textPane.getText()+ "Izbrisan je red sa indeksom: "+ selektovaniRed+"");
 		
 	}
 }
