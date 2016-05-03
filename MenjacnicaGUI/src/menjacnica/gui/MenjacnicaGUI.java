@@ -50,6 +50,9 @@ public class MenjacnicaGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public MenjacnicaGUI() {
+		setMinimumSize(new Dimension(600, 400));
+		setMaximumSize(new Dimension(600, 400));
+		setPreferredSize(new Dimension(600, 400));
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent arg0) {
@@ -136,13 +139,18 @@ public class MenjacnicaGUI extends JFrame {
 		popupMenu.add(mntmIzbrisiKurs);
 		
 		JMenuItem mntmIzvrsiZamenu = new JMenuItem("Izvrsi zamenu");
+		mntmIzvrsiZamenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GUIKontroler.otvoriProzorIzvrsiZamenu();
+			}
+		});
 		popupMenu.add(mntmIzvrsiZamenu);
 		
 		table = getTable();
 		scrollPane.setViewportView(table);
 		
 		JPanel panel = new JPanel();
-		panel.setPreferredSize(new Dimension(120, 10));
+		panel.setPreferredSize(new Dimension(150, 10));
 		panel.setMinimumSize(new Dimension(120, 10));
 		panel.setMaximumSize(new Dimension(120, 10));
 		contentPane.add(panel, BorderLayout.EAST);
@@ -153,7 +161,7 @@ public class MenjacnicaGUI extends JFrame {
 				GUIKontroler.otvoriDodajStudenta();
 			}
 		});
-		btnNewButton.setPreferredSize(new Dimension(100, 23));
+		btnNewButton.setPreferredSize(new Dimension(140, 23));
 		panel.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Izbrisi kurs");
@@ -163,18 +171,23 @@ public class MenjacnicaGUI extends JFrame {
 				
 			}
 		});
-		btnNewButton_1.setPreferredSize(new Dimension(100, 23));
+		btnNewButton_1.setPreferredSize(new Dimension(140, 23));
 		panel.add(btnNewButton_1);
 		
 		JButton btnIzvrsiZamenu = new JButton("Izvrsi zamenu");
-		btnIzvrsiZamenu.setPreferredSize(new Dimension(100, 23));
+		btnIzvrsiZamenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GUIKontroler.otvoriProzorIzvrsiZamenu();
+			}
+		});
+		btnIzvrsiZamenu.setPreferredSize(new Dimension(140, 23));
 		panel.add(btnIzvrsiZamenu);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		contentPane.add(scrollPane_1, BorderLayout.SOUTH);
 		
 		textPane = new JTextPane();
-		textPane.setPreferredSize(new Dimension(6, 50));
+		textPane.setPreferredSize(new Dimension(6, 90));
 		textPane.setBorder(new TitledBorder(null, "STATUS", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		scrollPane_1.setViewportView(textPane);
 	}
@@ -214,27 +227,12 @@ public class MenjacnicaGUI extends JFrame {
 		
 	}
 
-	public void ispisZaUcitajFajl(String absolutePath) {
-		textPane.setText(textPane.getText()+ "Ucitan fajl: " + absolutePath + "\n");
-		
-	}
-
-	public void ispisZaSacuvajFajl(String absolutePath) {
-		textPane.setText(textPane.getText()+ "Sacuvan fajl: " + absolutePath + "\n");
-		
-	}
-
-	public void ispisZaDodaj(String k) {
-		textPane.setText(textPane.getText()+ k + "\n");
-		
-	}
-
 	public int vratiSelektovaniRed() {
 		return table.getSelectedRow();
 	}
 
-	public void ispisiPorukuOBrisanju(int selektovaniRed) {
-		textPane.setText(textPane.getText()+ "Izbrisan je red sa indeksom: "+ selektovaniRed+"");
+	public void ispisiStatus(String s) {
+		textPane.setText(textPane.getText() + s +"\n");
 		
 	}
 }

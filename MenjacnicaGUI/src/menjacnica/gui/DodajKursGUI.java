@@ -62,18 +62,18 @@ public class DodajKursGUI extends JFrame {
 		panel.add(lblSifra);
 		
 		tfsifra = new JTextField();
-		tfsifra.setBounds(9, 21, 183, 39);
+		tfsifra.setBounds(9, 34, 183, 26);
 		panel.add(tfsifra);
 		tfsifra.setColumns(10);
 		
 		tfnaziv = new JTextField();
 		tfnaziv.setColumns(10);
-		tfnaziv.setBounds(214, 21, 183, 39);
+		tfnaziv.setBounds(214, 34, 183, 26);
 		panel.add(tfnaziv);
 		
 		tfprodajni = new JTextField();
 		tfprodajni.setColumns(10);
-		tfprodajni.setBounds(9, 87, 183, 39);
+		tfprodajni.setBounds(9, 100, 183, 26);
 		panel.add(tfprodajni);
 		
 		JLabel lblProdajniKurs = new JLabel("Prodajni kurs");
@@ -94,12 +94,12 @@ public class DodajKursGUI extends JFrame {
 		
 		tfkupovni = new JTextField();
 		tfkupovni.setColumns(10);
-		tfkupovni.setBounds(214, 87, 183, 39);
+		tfkupovni.setBounds(214, 100, 183, 26);
 		panel.add(tfkupovni);
 		
 		tfsrednji = new JTextField();
 		tfsrednji.setColumns(10);
-		tfsrednji.setBounds(9, 153, 183, 39);
+		tfsrednji.setBounds(9, 168, 183, 24);
 		panel.add(tfsrednji);
 		
 		JLabel lblSrednjiKurs = new JLabel("Srednji kurs");
@@ -120,7 +120,7 @@ public class DodajKursGUI extends JFrame {
 		
 		tfskraceni = new JTextField();
 		tfskraceni.setColumns(10);
-		tfskraceni.setBounds(214, 153, 183, 39);
+		tfskraceni.setBounds(214, 168, 183, 24);
 		panel.add(tfskraceni);
 		
 		JButton btndodaj = new JButton("Dodaj");
